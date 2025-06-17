@@ -7,7 +7,11 @@ function startCounting(element, target) {
     } else {
       clearInterval(interval); // Stop when the target is reached
     }
+<<<<<<< HEAD
   }, 200); // Adjust the speed of counting here (100ms between each increment)
+=======
+  }, 100); // Adjust the speed of counting here (100ms between each increment)
+>>>>>>> 44cfa66 ( updated nabar)
 }
 
 // Create an intersection observer to detect when the element is in view
@@ -34,7 +38,11 @@ const observerApp = new IntersectionObserver(
       const h1Element = entry.target.querySelector("h1");
       if (entry.isIntersecting) {
         startCounting(h1Element, 5); // Start counting to 13 when in view
+<<<<<<< HEAD
         observer.unobserve(entry.target); // Stop observing once it's triggered
+=======
+        observerApp.unobserve(entry.target); // Stop observing once it's triggered
+>>>>>>> 44cfa66 ( updated nabar)
       }
     });
   },
@@ -59,12 +67,20 @@ document.addEventListener("DOMContentLoaded", () => {
       images.forEach((img, index) => {
         setTimeout(() => {
           img.classList.add("visible");
+<<<<<<< HEAD
         }, index * 340); // Add delay for each image
+=======
+        }, index * 200);
+>>>>>>> 44cfa66 ( updated nabar)
       });
     }
   };
 
   window.addEventListener("scroll", handleScroll);
+<<<<<<< HEAD
+=======
+  handleScroll(); // Check on load
+>>>>>>> 44cfa66 ( updated nabar)
 });
 
 var swiper = new Swiper(".swiper", {
@@ -86,8 +102,13 @@ var swiper = new Swiper(".swiper", {
   },
   loop: true,
   autoplay: {
+<<<<<<< HEAD
     delay: 1000, // Time in milliseconds between automatic slides
     disableOnInteraction: false, // Keep autoplay running even after user interaction
+=======
+    delay: 3000,
+    disableOnInteraction: false,
+>>>>>>> 44cfa66 ( updated nabar)
   },
   pagination: {
     el: ".swiper-pagination",
@@ -131,7 +152,11 @@ document.addEventListener("DOMContentLoaded", () => {
     },
     {
       img: "https://source.unsplash.com/80x80/?businesswoman",
+<<<<<<< HEAD
       msg: '"I run a small bakery, and they created a custom ordering system for me. It’s easy to use and has boosted my sales significantly!"',
+=======
+      msg: '"I run a small bakery, and they created a custom ordering system for me. It\'s easy to use and has boosted my sales significantly!"',
+>>>>>>> 44cfa66 ( updated nabar)
       name: "Anjali Gupta",
       rating: "⭐⭐⭐⭐",
     },
@@ -185,9 +210,15 @@ function typePlaceholder() {
     index++;
     if (index === placeholderText.length) {
       clearInterval(typingInterval);
+<<<<<<< HEAD
       setTimeout(erasePlaceholder, 2000); // Wait for a bit before erasing
     }
   }, 8); // Adjust typing speed here
+=======
+      setTimeout(erasePlaceholder, 3000); // Wait for a bit before erasing
+    }
+  }, 50); // Adjust typing speed here
+>>>>>>> 44cfa66 ( updated nabar)
 }
 
 function erasePlaceholder() {
@@ -202,9 +233,15 @@ function erasePlaceholder() {
       clearInterval(erasingInterval);
       currentPlaceholderIndex =
         (currentPlaceholderIndex + 1) % placeholders.length; // Cycle through the placeholders
+<<<<<<< HEAD
       setTimeout(typePlaceholder, 80); // Wait before starting the next placeholder
     }
   }, 8); // Adjust erasing speed here
+=======
+      setTimeout(typePlaceholder, 1000); // Wait before starting the next placeholder
+    }
+  }, 30); // Adjust erasing speed here
+>>>>>>> 44cfa66 ( updated nabar)
 }
 
 // Start typing the first placeholder
@@ -213,6 +250,156 @@ typePlaceholder();
 
 // Function to set the selected plan
 function selectPlan(planValue) {
+<<<<<<< HEAD
   const selectInput = document.getElementById("service");
   selectInput.value = planValue; // Set the value of the select input
 }
+=======
+  const serviceSelect = document.getElementById("service");
+  if (serviceSelect) {
+    serviceSelect.value = planValue;
+    serviceSelect.scrollIntoView({ behavior: "smooth" });
+  }
+}
+
+// Enhanced Navbar Functionality
+document.addEventListener("DOMContentLoaded", () => {
+  const navbar = document.querySelector("nav");
+  const mobileToggle = document.querySelector(".mobile-nav-toggle");
+  const features = document.querySelector(".features");
+
+  // Navbar scroll effect
+  window.addEventListener("scroll", () => {
+    if (window.scrollY > 100) {
+      navbar.classList.add("scrolled");
+    } else {
+      navbar.classList.remove("scrolled");
+    }
+  });
+
+  // Mobile navigation toggle
+  if (mobileToggle && features) {
+    mobileToggle.addEventListener("click", () => {
+      mobileToggle.classList.toggle("active");
+      features.classList.toggle("active");
+    });
+
+    // Close mobile menu when clicking on a link
+    const navLinks = features.querySelectorAll("a");
+    navLinks.forEach(link => {
+      link.addEventListener("click", () => {
+        mobileToggle.classList.remove("active");
+        features.classList.remove("active");
+      });
+    });
+
+    // Close mobile menu when clicking outside
+    document.addEventListener("click", (e) => {
+      if (!navbar.contains(e.target)) {
+        mobileToggle.classList.remove("active");
+        features.classList.remove("active");
+      }
+    });
+  }
+
+  // Smooth scrolling for navigation links
+  const allNavLinks = document.querySelectorAll('a[href^="#"]');
+  allNavLinks.forEach(link => {
+    link.addEventListener("click", (e) => {
+      e.preventDefault();
+      const targetId = link.getAttribute("href");
+      const targetSection = document.querySelector(targetId);
+      
+      if (targetSection) {
+        const offsetTop = targetSection.offsetTop - 80; // Account for fixed navbar
+        window.scrollTo({
+          top: offsetTop,
+          behavior: "smooth"
+        });
+      }
+    });
+  });
+});
+
+// Add CSS for enhanced navbar animations
+const navbarStyles = document.createElement("style");
+navbarStyles.textContent = `
+  @keyframes slideInFromTop {
+    from {
+      transform: translateY(-100%);
+      opacity: 0;
+    }
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+
+  @keyframes fadeInUp {
+    from {
+      transform: translateY(20px);
+      opacity: 0;
+    }
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+
+  .nav-container {
+    animation: slideInFromTop 0.6s ease-out;
+  }
+
+  .features a {
+    animation: fadeInUp 0.6s ease-out;
+    animation-fill-mode: both;
+  }
+
+  .features a:nth-child(1) { animation-delay: 0.1s; }
+  .features a:nth-child(2) { animation-delay: 0.2s; }
+  .features a:nth-child(3) { animation-delay: 0.3s; }
+  .features a:nth-child(4) { animation-delay: 0.4s; }
+
+  .btn {
+    animation: fadeInUp 0.6s ease-out 0.5s both;
+  }
+
+  .logo img {
+    animation: fadeInUp 0.6s ease-out 0.1s both;
+  }
+
+  /* Enhanced hover effects */
+  .features a:hover {
+    transform: translateY(-3px);
+    text-shadow: 0 0 10px rgba(31, 114, 242, 0.5);
+  }
+
+  .btn:hover {
+    transform: translateY(-3px) scale(1.05);
+  }
+
+  /* Mobile menu animations */
+  .features.active {
+    animation: slideInFromTop 0.3s ease-out;
+  }
+
+  .mobile-nav-toggle span {
+    transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  }
+
+  .mobile-nav-toggle.active span:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+  }
+
+  .mobile-nav-toggle.active span:nth-child(2) {
+    opacity: 0;
+    transform: scale(0);
+  }
+
+  .mobile-nav-toggle.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(7px, -6px);
+  }
+`;
+
+document.head.appendChild(navbarStyles);
+>>>>>>> 44cfa66 ( updated nabar)
