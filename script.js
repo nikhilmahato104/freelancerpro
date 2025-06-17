@@ -8,10 +8,14 @@ function startCounting(element, target) {
       clearInterval(interval); // Stop when the target is reached
     }
 <<<<<<< HEAD
+<<<<<<< HEAD
   }, 200); // Adjust the speed of counting here (100ms between each increment)
 =======
   }, 100); // Adjust the speed of counting here (100ms between each increment)
 >>>>>>> 44cfa66 ( updated nabar)
+=======
+  }, 200); // Adjust the speed of counting here (100ms between each increment)
+>>>>>>> cad8511 (committ)
 }
 
 // Create an intersection observer to detect when the element is in view
@@ -39,10 +43,14 @@ const observerApp = new IntersectionObserver(
       if (entry.isIntersecting) {
         startCounting(h1Element, 5); // Start counting to 13 when in view
 <<<<<<< HEAD
+<<<<<<< HEAD
         observer.unobserve(entry.target); // Stop observing once it's triggered
 =======
         observerApp.unobserve(entry.target); // Stop observing once it's triggered
 >>>>>>> 44cfa66 ( updated nabar)
+=======
+        observer.unobserve(entry.target); // Stop observing once it's triggered
+>>>>>>> cad8511 (committ)
       }
     });
   },
@@ -53,7 +61,107 @@ const observerApp = new IntersectionObserver(
 const countDivApp = document.getElementById("countDivApp");
 observerApp.observe(countDivApp);
 
+<<<<<<< HEAD
 document.addEventListener("DOMContentLoaded", () => {
+=======
+// Enhanced project showcase animation
+document.addEventListener("DOMContentLoaded", () => {
+  // Enhanced Navbar Functionality
+  const navbar = document.querySelector('.navbar');
+  const navToggle = document.getElementById('nav-toggle');
+  const navMenu = document.getElementById('nav-menu');
+  const navLinks = document.querySelectorAll('.nav-link');
+
+  // Mobile menu toggle
+  if (navToggle && navMenu) {
+    navToggle.addEventListener('click', () => {
+      navToggle.classList.toggle('active');
+      navMenu.classList.toggle('active');
+      document.body.style.overflow = navMenu.classList.contains('active') ? 'hidden' : '';
+    });
+
+    // Close mobile menu when clicking on a link
+    navLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        navToggle.classList.remove('active');
+        navMenu.classList.remove('active');
+        document.body.style.overflow = '';
+      });
+    });
+
+    // Close mobile menu when clicking outside
+    document.addEventListener('click', (e) => {
+      if (!navbar.contains(e.target)) {
+        navToggle.classList.remove('active');
+        navMenu.classList.remove('active');
+        document.body.style.overflow = '';
+      }
+    });
+  }
+
+  // Scroll-based navbar styling
+  let lastScrollTop = 0;
+  window.addEventListener('scroll', () => {
+    const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+    
+    if (navbar) {
+      // Add scrolled class for background change
+      if (scrollTop > 100) {
+        navbar.classList.add('scrolled');
+      } else {
+        navbar.classList.remove('scrolled');
+      }
+
+      // Hide/show navbar on scroll (optional)
+      if (scrollTop > lastScrollTop && scrollTop > 200) {
+        navbar.style.transform = 'translateY(-100%)';
+      } else {
+        navbar.style.transform = 'translateY(0)';
+      }
+    }
+    
+    lastScrollTop = scrollTop;
+  });
+
+  // Active link highlighting based on scroll position
+  const sections = document.querySelectorAll('section[id]');
+  window.addEventListener('scroll', () => {
+    const scrollPos = window.scrollY + 100;
+
+    sections.forEach(section => {
+      const sectionTop = section.offsetTop;
+      const sectionHeight = section.offsetHeight;
+      const sectionId = section.getAttribute('id');
+      const navLink = document.querySelector(`.nav-link[href="#${sectionId}"]`);
+
+      if (scrollPos >= sectionTop && scrollPos < sectionTop + sectionHeight) {
+        navLinks.forEach(link => link.classList.remove('active'));
+        if (navLink) navLink.classList.add('active');
+      }
+    });
+  });
+
+  // Smooth scrolling for navigation links
+  navLinks.forEach(link => {
+    link.addEventListener('click', (e) => {
+      e.preventDefault();
+      
+      const targetId = link.getAttribute('href');
+      const targetSection = document.querySelector(targetId);
+      
+      if (targetSection) {
+        const offsetTop = targetSection.offsetTop - 80; // Account for fixed navbar
+        
+        window.scrollTo({
+          top: offsetTop,
+          behavior: 'smooth'
+        });
+      }
+    });
+  });
+
+  // Project showcase animation
+>>>>>>> cad8511 (committ)
   const images = document.querySelectorAll(
     "#project-showcase .image-container img"
   );
@@ -63,6 +171,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const sectionPosition = section.getBoundingClientRect().top;
     const viewportHeight = window.innerHeight;
 
+<<<<<<< HEAD
     if (sectionPosition < viewportHeight - 100) {
       images.forEach((img, index) => {
         setTimeout(() => {
@@ -72,11 +181,19 @@ document.addEventListener("DOMContentLoaded", () => {
 =======
         }, index * 200);
 >>>>>>> 44cfa66 ( updated nabar)
+=======
+    if (sectionPosition < viewportHeight * 0.8) {
+      images.forEach((img, index) => {
+        setTimeout(() => {
+          img.classList.add("visible");
+        }, index * 340); // Add delay for each image
+>>>>>>> cad8511 (committ)
       });
     }
   };
 
   window.addEventListener("scroll", handleScroll);
+<<<<<<< HEAD
 <<<<<<< HEAD
 =======
   handleScroll(); // Check on load
@@ -135,28 +252,48 @@ document.addEventListener("DOMContentLoaded", () => {
     {
       img: "assets/img1.png",
       msg: '"I hired them to create an e-commerce site for my clothing store. The process was smooth, and the site looks amazing. My customers love it!"',
+=======
+
+  // Testimonials functionality
+  const testimonials = [
+    {
+      img: "https://source.unsplash.com/80x80/?businessman",
+      msg: "I hired them to create an e-commerce site for my clothing store. The process was smooth, and the site looks amazing. My customers love it!",
+>>>>>>> cad8511 (committ)
       name: "Professor Zimuzo Echezonachukwu",
       rating: "⭐⭐⭐⭐⭐",
     },
     {
       img: "https://source.unsplash.com/80x80/?woman",
+<<<<<<< HEAD
       msg: '"They built an app for our NGO, making it easier for donors to connect with us. The communication was clear, and the results exceeded our expectations!"',
+=======
+      msg: "They built an app for our NGO, making it easier for donors to connect with us. The communication was clear, and the results exceeded our expectations!",
+>>>>>>> cad8511 (committ)
       name: "Neha Verma",
       rating: "⭐⭐⭐⭐⭐",
     },
     {
       img: "https://source.unsplash.com/80x80/?businessman",
+<<<<<<< HEAD
       msg: '"I needed a portfolio website to showcase my photography, and they delivered exactly what I imagined. The design is sleek and professional!"',
+=======
+      msg: "I needed a portfolio website to showcase my photography, and they delivered exactly what I imagined. The design is sleek and professional!",
+>>>>>>> cad8511 (committ)
       name: "Ravi Kumar",
       rating: "⭐⭐⭐⭐⭐",
     },
     {
       img: "https://source.unsplash.com/80x80/?businesswoman",
 <<<<<<< HEAD
+<<<<<<< HEAD
       msg: '"I run a small bakery, and they created a custom ordering system for me. It’s easy to use and has boosted my sales significantly!"',
 =======
       msg: '"I run a small bakery, and they created a custom ordering system for me. It\'s easy to use and has boosted my sales significantly!"',
 >>>>>>> 44cfa66 ( updated nabar)
+=======
+      msg: "I run a small bakery, and they created a custom ordering system for me. It's easy to use and has boosted my sales significantly!",
+>>>>>>> cad8511 (committ)
       name: "Anjali Gupta",
       rating: "⭐⭐⭐⭐",
     },
@@ -185,6 +322,51 @@ document.addEventListener("DOMContentLoaded", () => {
   setInterval(updateTestimonial, 4000);
 });
 
+<<<<<<< HEAD
+=======
+var swiper = new Swiper(".swiper", {
+  effect: "coverflow",
+  grabCursor: true,
+  centeredSlides: true,
+  coverflowEffect: {
+    rotate: 0,
+    stretch: 0,
+    depth: 100,
+    modifier: 3,
+    slideShadows: true,
+  },
+  keyboard: {
+    enabled: true,
+  },
+  mousewheel: {
+    thresholdDelta: 70,
+  },
+  loop: true,
+  autoplay: {
+    delay: 1000, // Time in milliseconds between automatic slides
+    disableOnInteraction: false, // Keep autoplay running even after user interaction
+  },
+  pagination: {
+    el: ".swiper-pagination",
+    clickable: true,
+  },
+  breakpoints: {
+    640: {
+      slidesPerView: 2,
+    },
+    768: {
+      slidesPerView: 1,
+    },
+    1024: {
+      slidesPerView: 2,
+    },
+    1560: {
+      slidesPerView: 3,
+    },
+  },
+});
+
+>>>>>>> cad8511 (committ)
 // Placeholder texts
 const placeholders = [
   "Describe the type of project you'd like to create (e.g., website, mobile app, branding, etc.)",
@@ -211,6 +393,7 @@ function typePlaceholder() {
     if (index === placeholderText.length) {
       clearInterval(typingInterval);
 <<<<<<< HEAD
+<<<<<<< HEAD
       setTimeout(erasePlaceholder, 2000); // Wait for a bit before erasing
     }
   }, 8); // Adjust typing speed here
@@ -219,6 +402,11 @@ function typePlaceholder() {
     }
   }, 50); // Adjust typing speed here
 >>>>>>> 44cfa66 ( updated nabar)
+=======
+      setTimeout(erasePlaceholder, 2000); // Wait for a bit before erasing
+    }
+  }, 8); // Adjust typing speed here
+>>>>>>> cad8511 (committ)
 }
 
 function erasePlaceholder() {
@@ -234,6 +422,7 @@ function erasePlaceholder() {
       currentPlaceholderIndex =
         (currentPlaceholderIndex + 1) % placeholders.length; // Cycle through the placeholders
 <<<<<<< HEAD
+<<<<<<< HEAD
       setTimeout(typePlaceholder, 80); // Wait before starting the next placeholder
     }
   }, 8); // Adjust erasing speed here
@@ -242,6 +431,11 @@ function erasePlaceholder() {
     }
   }, 30); // Adjust erasing speed here
 >>>>>>> 44cfa66 ( updated nabar)
+=======
+      setTimeout(typePlaceholder, 80); // Wait before starting the next placeholder
+    }
+  }, 8); // Adjust erasing speed here
+>>>>>>> cad8511 (committ)
 }
 
 // Start typing the first placeholder
@@ -250,6 +444,7 @@ typePlaceholder();
 
 // Function to set the selected plan
 function selectPlan(planValue) {
+<<<<<<< HEAD
 <<<<<<< HEAD
   const selectInput = document.getElementById("service");
   selectInput.value = planValue; // Set the value of the select input
@@ -403,3 +598,8 @@ navbarStyles.textContent = `
 
 document.head.appendChild(navbarStyles);
 >>>>>>> 44cfa66 ( updated nabar)
+=======
+  const selectInput = document.getElementById("service");
+  selectInput.value = planValue; // Set the value of the select input
+}
+>>>>>>> cad8511 (committ)
